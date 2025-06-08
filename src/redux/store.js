@@ -20,7 +20,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  auth: adminReducer,
+  admin: adminReducer,
   //   cart: cartReducer,
   theme: themeReducer,
 });

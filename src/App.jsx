@@ -1,12 +1,12 @@
 // import { useEffect, useState } from 'react';
-import './App.css';
-import './seedProducts';
+import '@/App.css';
+import '@/seedProducts';
 // import { fetchProducts } from './services/productsAPI';
 import { Route, Routes } from 'react-router-dom';
-import PrivateRoute from './routes/PrivateRoute';
-import { Home } from './pages/HomePage/Home';
-import { Login } from './pages/LoginPage/Login';
-import { AdminDashboard } from './pages/AdminDashboard/AdminDashboard';
+import PrivateRoute from '@/routes/PrivateRoute';
+import { Home } from '@/pages/HomePage/Home';
+import { Login } from '@/pages/LoginPage/Login';
+import { AdminDashboard } from '@/pages/AdminDashboard/AdminDashboard';
 
 function App() {
   // const [products, setProducts] = useState([]);

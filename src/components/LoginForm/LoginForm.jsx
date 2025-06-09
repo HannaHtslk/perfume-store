@@ -3,6 +3,13 @@ import { selectUserLoading, selectUserError } from '@/redux/auth/selectors';
 import { login } from '@/redux/auth/operations';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Typography, Alert } from '@mui/material';
+import {
+  StyledPaper,
+  StyledForm,
+  StyledTextField,
+  StyledButton,
+} from './LoginForm.styles';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -24,30 +31,46 @@ export const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Admin Login</h2>
+    <StyledPaper elevation={3}>
+      <Typography variant="h5" component="h2" align="center" gutterBottom>
+        Admin Login
+      </Typography>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={e => setEmail(e.target.value)}
-        required
-      />
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledTextField
+          type="email"
+          label="Email"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+          fullWidth
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={e => setPassword(e.target.value)}
-        required
-      />
+        <StyledTextField
+          type="password"
+          label="Password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          required
+          fullWidth
+        />
 
-      <button type="submit" disabled={loading}>
-        {loading ? 'Logging in...' : 'Login'}
-      </button>
+        <StyledButton
+          type="submit"
+          variant="contained"
+          color="primary"
+          disabled={loading}
+          fullWidth
+        >
+          {loading ? 'Logging in...' : 'Login'}
+        </StyledButton>
 
-      {error && <p>Error: {error}</p>}
-    </form>
+        {error && (
+          <Alert severity="error" sx={{ mt: 2 }}>
+            {error}
+          </Alert>
+        )}
+      </StyledForm>
+    </StyledPaper>
   );
 };

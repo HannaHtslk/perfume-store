@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import themeReducer from './theme/slice.js';
 import adminReducer from './auth/slice.js';
+import productsReducer from './products/slice.js';
 
 const persistConfig = {
   key: 'root',
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   admin: adminReducer,
   //   cart: cartReducer,
   theme: themeReducer,
+  products: productsReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -108,4 +108,4 @@ const seedProducts = async () => {
   }
 };
 
-seedProducts();
+// seedProducts();

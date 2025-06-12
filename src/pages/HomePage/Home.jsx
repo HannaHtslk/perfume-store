@@ -1,12 +1,19 @@
 import { Box, Typography, Button, Stack } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 export const Home = () => {
+  const theme = useTheme();
+  const isLight = theme.palette.mode === 'light';
+  const bgImage = isLight
+    ? 'https://images.unsplash.com/photo-1600025644459-ae91eefbac84?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    : 'https://images.unsplash.com/photo-1543857261-f71238eb4188?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+
   return (
     <Box
       sx={{
         height: '100vh',
         width: '100%',
-        backgroundImage: `url('https://images.unsplash.com/photo-1588514912908-8f5891714f8d?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
+        backgroundImage: `url('${bgImage}')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -19,7 +26,7 @@ export const Home = () => {
           content: '""',
           position: 'absolute',
           inset: 0,
-          background: 'rgba(30, 22, 54, 0.35)',
+          background: 'rgba(30, 22, 54, 0.13)',
           zIndex: 1,
         },
       }}

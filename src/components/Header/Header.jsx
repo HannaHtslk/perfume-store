@@ -4,7 +4,15 @@ import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 
 export const Header = () => {
   return (
-    <AppBar position="static">
+    <AppBar
+      position="absolute"
+      sx={{
+        backgroundColor: 'transparent',
+        backdropFilter: 'blur(8px)',
+        boxShadow: 'none',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      }}
+    >
       <Toolbar>
         <Box sx={{ flexGrow: 1, display: 'flex', gap: 2 }}>
           <StyledLink to="/">

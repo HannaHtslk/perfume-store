@@ -4,7 +4,7 @@ export const Home = () => {
   return (
     <Box
       sx={{
-        minHeight: '100vh',
+        height: '100vh',
         width: '100%',
         backgroundImage: `url('https://images.unsplash.com/photo-1588514912908-8f5891714f8d?q=80&w=2938&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')`,
         backgroundSize: 'cover',
@@ -14,6 +14,7 @@ export const Home = () => {
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
+        overflow: 'hidden',
         '&::before': {
           content: '""',
           position: 'absolute',

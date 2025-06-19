@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '@/redux/products/operations';
 import {
@@ -17,11 +17,70 @@ import {
   Pagination,
   Stack,
   IconButton,
+  Tooltip,
 } from '@mui/material';
 import { PageBackground } from '@/components/PageBackground/PageBackground';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const PAGE_SIZE = 8;
+
+const TruncatedText = memo(({ text, variant, sx, lines = 1 }) => {
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const textRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new ResizeObserver(() => {
+      const element = textRef.current;
+      if (!element) return;
+
+      setIsOverflowing(
+        lines === 1
+          ? element.scrollWidth > element.clientWidth
+          : element.scrollHeight > element.clientHeight
+      );
+    });
+
+    if (textRef.current) {
+      observer.observe(textRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [lines]);
+
+  const textComponent = (
+    <Typography
+      ref={textRef}
+      variant={variant}
+      sx={{
+        ...sx,
+        ...(lines === 1
+          ? {
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }
+          : {
+              display: '-webkit-box',
+              WebkitLineClamp: lines,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+            }),
+      }}
+    >
+      {text}
+    </Typography>
+  );
+
+  return isOverflowing ? (
+    <Tooltip title={text} enterDelay={700}>
+      {textComponent}
+    </Tooltip>
+  ) : (
+    textComponent
+  );
+});
+
+TruncatedText.displayName = 'TruncatedText';
 
 export const Catalogue = () => {
   const dispatch = useDispatch();
@@ -140,20 +199,16 @@ export const Catalogue = () => {
                         borderTop: '1px solid rgba(0, 0, 0, 0.1)',
                       }}
                     >
-                      <Typography
+                      <TruncatedText
+                        text={product.name}
                         variant="subtitle1"
                         sx={{
                           fontWeight: 500,
                           fontSize: '0.95rem',
                           color: 'text.primary',
                           maxWidth: '70%',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'nowrap',
                         }}
-                      >
-                        {product.name}
-                      </Typography>
+                      />
                       <Typography
                         variant="body1"
                         sx={{
@@ -173,7 +228,7 @@ export const Catalogue = () => {
                         left: 0,
                         right: 0,
                         bgcolor: 'rgba(255, 255, 255, 0.98)',
-                        height: '65%',
+                        height: '70%',
                         transform: 'translateY(100%)',
                         transition: 'transform 0.3s ease-in-out',
                         display: 'flex',
@@ -189,20 +244,17 @@ export const Catalogue = () => {
                           borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
                         }}
                       >
-                        <Typography
+                        <TruncatedText
+                          text={product.name}
                           variant="subtitle1"
+                          lines={1}
                           sx={{
                             fontWeight: 500,
                             fontSize: '0.95rem',
                             color: 'text.primary',
                             maxWidth: '70%',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            whiteSpace: 'nowrap',
                           }}
-                        >
-                          {product.name}
-                        </Typography>
+                        />
                         <Typography
                           variant="body1"
                           sx={{
@@ -223,20 +275,16 @@ export const Catalogue = () => {
                           p: 2,
                         }}
                       >
-                        <Typography
+                        <TruncatedText
+                          text={product.description}
                           variant="body2"
+                          lines={5}
                           sx={{
                             color: 'text.secondary',
-                            display: '-webkit-box',
-                            WebkitLineClamp: 4,
-                            WebkitBoxOrient: 'vertical',
-                            overflow: 'hidden',
                             flex: 1,
                             lineHeight: 1.6,
                           }}
-                        >
-                          {product.description}
-                        </Typography>
+                        />
                         <IconButton
                           color="primary"
                           sx={{

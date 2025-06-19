@@ -46,8 +46,67 @@ export const Catalogue = () => {
   );
 
   if (loading)
-    return <CircularProgress sx={{ display: 'block', mx: 'auto', mt: 4 }} />;
-  if (error) return <Alert severity="error">{error}</Alert>;
+    return (
+      <Box
+        sx={{
+          minHeight: '100vh',
+          width: '100%',
+          backgroundImage: `url('${bgImage}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(30, 22, 54, 0.13)',
+            zIndex: 1,
+          },
+        }}
+      >
+        <Box
+          sx={{
+            position: 'relative',
+            zIndex: 2,
+            pt: { xs: 8, sm: 9 },
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <CircularProgress size={60} />
+        </Box>
+      </Box>
+    );
+  if (error)
+    return (
+      <Box
+        sx={{
+          minHeight: '100vh',
+          width: '100%',
+          backgroundImage: `url('${bgImage}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            background: 'rgba(30, 22, 54, 0.13)',
+            zIndex: 1,
+          },
+        }}
+      >
+        <Box
+          sx={{ position: 'relative', zIndex: 2, pt: { xs: 8, sm: 9 }, px: 3 }}
+        >
+          <Alert severity="error">{error}</Alert>
+        </Box>
+      </Box>
+    );
 
   return (
     <Box
@@ -70,7 +129,7 @@ export const Catalogue = () => {
         },
       }}
     >
-      <Box sx={{ position: 'relative', zIndex: 2 }}>
+      <Box sx={{ position: 'relative', zIndex: 2, pt: { xs: 8, sm: 9 } }}>
         <Grid container spacing={2} justifyContent="center">
           {paginatedProducts.map(product => (
             <Grid

@@ -10,8 +10,8 @@ export const AdminDashboard = () => {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
   const bgImage = isLight
-    ? 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=3540&auto=format&fit=crop'
-    : 'https://images.unsplash.com/photo-1470790376778-a9fbc86d70e2?q=80&w=3549&auto=format&fit=crop';
+    ? 'https://images.unsplash.com/photo-1600025644459-ae91eefbac84?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    : 'https://images.unsplash.com/photo-1659167530799-982cfce69360?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
   const handleLogout = async () => {
     try {

@@ -7,7 +7,7 @@ export const Login = () => {
   const isLight = theme.palette.mode === 'light';
   const bgImage = isLight
     ? 'https://images.unsplash.com/photo-1600025644459-ae91eefbac84?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-    : 'https://images.unsplash.com/photo-1512675828443-4f454c42253a?q=80&w=3540&auto=format&fit=crop';
+    : 'https://images.unsplash.com/photo-1659167530799-982cfce69360?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
   return (
     <Box

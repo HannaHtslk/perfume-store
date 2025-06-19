@@ -12,7 +12,7 @@ export const Header = () => {
       sx={{
         backgroundColor: isLight
           ? 'rgba(128, 96, 57, 0.07)'
-          : 'rgba(139, 115, 85, 0.28)',
+          : 'rgba(131, 123, 114, 0.18)',
         backdropFilter: 'blur(16px)',
         WebkitBackdropFilter: 'blur(16px)',
         boxShadow: 'none',

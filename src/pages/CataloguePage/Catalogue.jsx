@@ -10,15 +10,16 @@ import {
   Grid,
   Card,
   CardMedia,
-  CardContent,
   Typography,
   CircularProgress,
   Alert,
   Box,
   Pagination,
   Stack,
+  IconButton,
 } from '@mui/material';
 import { PageBackground } from '@/components/PageBackground/PageBackground';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const PAGE_SIZE = 8;
 
@@ -102,60 +103,153 @@ export const Catalogue = () => {
                     sx={{
                       width: '280px',
                       height: 280,
-                      display: 'flex',
-                      flexDirection: 'column',
+                      position: 'relative',
+                      overflow: 'hidden',
                       boxShadow: 2,
+                      transition: 'transform 0.3s ease-in-out',
+                      '&:hover': {
+                        transform: 'translateY(-4px)',
+                        '& .hover-content': {
+                          transform: 'translateY(0)',
+                        },
+                      },
                     }}
                   >
                     <CardMedia
                       component="img"
-                      height="120"
+                      height="280"
                       image={product.imageUrl}
                       alt={product.name}
-                      sx={{ objectFit: 'cover' }}
-                    />
-                    <CardContent
                       sx={{
-                        flexGrow: 1,
-                        minHeight: 80,
-                        p: 1.5,
+                        objectFit: 'cover',
+                      }}
+                    />
+
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        bgcolor: 'rgba(255, 255, 255, 0.98)',
+                        height: '20%',
                         display: 'flex',
-                        flexDirection: 'column',
+                        alignItems: 'center',
                         justifyContent: 'space-between',
+                        px: 2,
+                        borderTop: '1px solid rgba(0, 0, 0, 0.1)',
                       }}
                     >
-                      <Box>
+                      <Typography
+                        variant="subtitle1"
+                        sx={{
+                          fontWeight: 500,
+                          fontSize: '0.95rem',
+                          color: 'text.primary',
+                          maxWidth: '70%',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {product.name}
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontWeight: 600,
+                          color: 'primary.main',
+                        }}
+                      >
+                        ${product.price}
+                      </Typography>
+                    </Box>
+
+                    <Box
+                      className="hover-content"
+                      sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        bgcolor: 'rgba(255, 255, 255, 0.98)',
+                        height: '65%',
+                        transform: 'translateY(100%)',
+                        transition: 'transform 0.3s ease-in-out',
+                        display: 'flex',
+                        flexDirection: 'column',
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          p: 2,
+                          borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+                        }}
+                      >
                         <Typography
                           variant="subtitle1"
-                          component="div"
-                          gutterBottom
-                          noWrap
+                          sx={{
+                            fontWeight: 500,
+                            fontSize: '0.95rem',
+                            color: 'text.primary',
+                            maxWidth: '70%',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                          }}
                         >
                           {product.name}
                         </Typography>
                         <Typography
-                          variant="body2"
-                          color="text.secondary"
+                          variant="body1"
                           sx={{
+                            fontWeight: 600,
+                            color: 'primary.main',
+                          }}
+                        >
+                          ${product.price}
+                        </Typography>
+                      </Box>
+
+                      <Box
+                        sx={{
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: 2,
+                          flex: 1,
+                          p: 2,
+                        }}
+                      >
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: 'text.secondary',
                             display: '-webkit-box',
-                            WebkitLineClamp: 2,
+                            WebkitLineClamp: 4,
                             WebkitBoxOrient: 'vertical',
                             overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            fontSize: '0.92rem',
+                            flex: 1,
+                            lineHeight: 1.6,
                           }}
                         >
                           {product.description}
                         </Typography>
+                        <IconButton
+                          color="primary"
+                          sx={{
+                            bgcolor: 'rgba(0, 0, 0, 0.04)',
+                            '&:hover': {
+                              bgcolor: 'rgba(0, 0, 0, 0.08)',
+                            },
+                          }}
+                        >
+                          <ShoppingCartIcon />
+                        </IconButton>
                       </Box>
-                      <Typography
-                        variant="body1"
-                        color="primary"
-                        sx={{ mt: 1, fontWeight: 600 }}
-                      >
-                        ${product.price}
-                      </Typography>
-                    </CardContent>
+                    </Box>
                   </Card>
                 </Box>
               </Grid>

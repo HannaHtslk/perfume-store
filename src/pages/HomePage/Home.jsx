@@ -2,16 +2,22 @@ import { Box, Typography, Button, Stack, Slide, Fade } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import { PageBackground } from '@/components/PageBackground/PageBackground';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const theme = useTheme();
   const [showTitle, setShowTitle] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => setShowTitle(true), 300);
     setTimeout(() => setShowContent(true), 600);
   }, []);
+
+  const handleShopNowClick = () => {
+    navigate('/catalogue');
+  };
 
   return (
     <PageBackground>
@@ -65,6 +71,7 @@ export const Home = () => {
                   variant="contained"
                   color="inherit"
                   size="large"
+                  onClick={handleShopNowClick}
                   sx={{
                     px: 4,
                     py: 1.5,

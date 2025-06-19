@@ -164,9 +164,12 @@ export const createAppTheme = mode =>
       },
     },
     typography: {
+      fontFamily: '"Montserrat", sans-serif',
       h1: {
         fontSize: '2rem',
-        fontWeight: 500,
+        fontWeight: 300,
+        letterSpacing: '0.15em',
+        textTransform: 'uppercase',
         '@media (min-width:600px)': {
           fontSize: '2.5rem',
         },
@@ -176,7 +179,8 @@ export const createAppTheme = mode =>
       },
       h2: {
         fontSize: '1.75rem',
-        fontWeight: 500,
+        fontWeight: 300,
+        letterSpacing: '0.1em',
         '@media (min-width:600px)': {
           fontSize: '2rem',
         },
@@ -186,7 +190,8 @@ export const createAppTheme = mode =>
       },
       h3: {
         fontSize: '1.5rem',
-        fontWeight: 500,
+        fontWeight: 300,
+        letterSpacing: '0.08em',
         '@media (min-width:600px)': {
           fontSize: '1.75rem',
         },
@@ -194,8 +199,38 @@ export const createAppTheme = mode =>
           fontSize: '2rem',
         },
       },
+      h4: {
+        fontWeight: 300,
+        letterSpacing: '0.08em',
+      },
+      h5: {
+        fontWeight: 300,
+        letterSpacing: '0.08em',
+      },
+      h6: {
+        fontWeight: 300,
+        letterSpacing: '0.08em',
+      },
+      subtitle1: {
+        fontWeight: 300,
+        letterSpacing: '0.05em',
+      },
+      subtitle2: {
+        fontWeight: 300,
+        letterSpacing: '0.04em',
+      },
+      body1: {
+        fontWeight: 300,
+        letterSpacing: '0.03em',
+      },
+      body2: {
+        fontWeight: 300,
+        letterSpacing: '0.03em',
+      },
       button: {
-        fontWeight: 500,
+        fontWeight: 400,
+        letterSpacing: '0.15em',
+        textTransform: 'uppercase',
       },
     },
   });

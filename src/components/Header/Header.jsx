@@ -27,11 +27,11 @@ export const Header = () => {
           <StyledLink to="/">
             <Button color="inherit">Home</Button>
           </StyledLink>
-          <StyledLink to="/about">
-            <Button color="inherit">About Us</Button>
-          </StyledLink>
           <StyledLink to="/catalogue">
             <Button color="inherit">Catalogue</Button>
+          </StyledLink>
+          <StyledLink to="/about">
+            <Button color="inherit">About Us</Button>
           </StyledLink>
           <StyledLink to="/cart">
             <Button color="inherit">Cart</Button>

@@ -2,28 +2,24 @@ import { AppBar, Toolbar, Button, Box } from '@mui/material';
 import { StyledLink } from './Header.styles';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 import { useTheme } from '@mui/material/styles';
+import styles from './Header.module.css';
 
 export const Header = () => {
   const theme = useTheme();
   const isLight = theme.palette.mode === 'light';
+
+  const getHeaderClass = () => {
+    const baseClass = styles.header;
+    const themeClass = isLight
+      ? styles['header--light']
+      : styles['header--dark'];
+    return `${baseClass} ${themeClass}`;
+  };
+
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        backgroundColor: isLight
-          ? 'rgba(128, 96, 57, 0.07)'
-          : 'rgba(131, 123, 114, 0.18)',
-        backdropFilter: 'blur(16px)',
-        WebkitBackdropFilter: 'blur(16px)',
-        boxShadow: 'none',
-        borderBottom: isLight
-          ? '1px solid rgba(0,0,0,0.08)'
-          : '1px solid rgba(255,255,255,0.08)',
-        transition: 'background-color 0.3s, backdrop-filter 0.3s',
-      }}
-    >
+    <AppBar position="fixed" className={getHeaderClass()}>
       <Toolbar>
-        <Box sx={{ flexGrow: 1, display: 'flex', gap: 2 }}>
+        <Box className={styles.navigation}>
           <StyledLink to="/">
             <Button color="inherit">Home</Button>
           </StyledLink>

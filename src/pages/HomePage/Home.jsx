@@ -44,7 +44,15 @@ export const Home = () => {
                   onClick={handleShopNowClick}
                   className={styles.shopNowButton}
                   sx={{
+                    px: 4,
+                    py: 1.5,
+                    fontSize: '1.1rem',
+                    backdropFilter: 'blur(5px)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.15)',
                     color: theme.palette.primary.contrastText,
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 255, 255, 0.25)',
+                    },
                   }}
                 >
                   Shop Now
